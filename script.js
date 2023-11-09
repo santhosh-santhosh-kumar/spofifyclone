@@ -95,12 +95,14 @@ const obj3=[
     }
 ]
 for(i=0;i<5;i++){
-    
     const col=document.createElement('div')
     col.setAttribute('class','col-mb-5')
     col.innerHTML=`
-    <div class="card" style="width: 10.6rem; background: rgba(128, 128, 128, 0.103) !important;">
+    <div class="card card1" style="width: 10.6rem; background: rgba(128, 128, 128, 0.103) !important;">
             <img src=${ob1[i].img} class="card-img-top" alt="image">
+            <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
         <div class="card-body">
             <h5 class="card-title">${ob1[i].movieName}</h5>
             <p class="card-text">${ob1[i].hits}</p>
@@ -109,15 +111,18 @@ for(i=0;i<5;i++){
      </div>    
     </div>
 `
-var row=document.getElementById('row')
+var row=document.getElementById('row1')
 row.append(col)
 }
 for(i=0;i<5;i++){
     const col1=document.createElement('div')
     col1.setAttribute('class','col-mb-5')
     col1.innerHTML=`
-    <div class="card" style="width: 10rem; background: rgba(128, 128, 128, 0.103) !important;">
-            <img src=${obj2[i].img} alt="image">
+    <div class="card card1" style="width: 10.6rem; background: rgba(128, 128, 128, 0.103) !important;">
+            <img src=${obj2[i].img} class="card-img-top" alt="image">
+        <div class="play">
+            <span class="fa fa-play"></span>
+        </div>
         <div class="card-body">
             <h5 class="card-title">${obj2[i].artName}</h5>
             <p class="card-text">${obj2[i].hits}</p>
@@ -132,8 +137,11 @@ for(i=0;i<5;i++){
     const col2=document.createElement('div')
     col2.setAttribute('class','col-mb-5')
     col2.innerHTML=`
-    <div class="card" style="width: 10rem; background: rgba(128, 128, 128, 0.103) !important;">
-            <img src=${obj3[i].img} alt="image">
+    <div class="card card1" style="width: 10.6rem; background: rgba(128, 128, 128, 0.103) !important;">
+            <img src=${obj3[i].img} class="card-img-top" alt="image">
+            <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
         <div class="card-body">
             <h5 class="card-title">${obj3[i].movieName}</h5>
             <p class="card-text">you are add this song in your favorite list....</p>
