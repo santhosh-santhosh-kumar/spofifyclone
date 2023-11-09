@@ -1,0 +1,136 @@
+.no-gutters{
+    margin-top: 10px !important;
+}
+
+.col-md-9{
+    background-color: rgb(28, 25, 25) !important;
+    height: 550px;
+    margin-right: 0px;
+    border-radius: 10px;
+    border-right: 5px solid black;
+    overflow: auto !important;
+}
+.card{
+    background-color: rgb(28, 25, 25) !important;
+    border: 0px !important;
+    border-radius: 10px !important;
+}
+.col-md-3{
+    margin-left: 0px;
+    border-left: 10px solid black;
+}
+.library{
+   display: flex;
+   justify-content: right;
+}
+#lib{
+    width:300px
+}
+#plus{
+    width: 40px;
+}
+body{
+    color: white !important;
+    background-color: black !important;
+}
+.fa-solid{
+   margin-right: 10px;
+}
+.playlist{
+    background-color: rgba(128, 128, 128, 0.103);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.btn-primary{
+  background-color: white !important;
+  color: black !important;
+  border: none !important;
+  border-radius: 30px !important;
+}
+.add{
+    margin-top: 10px;
+}
+.bar{
+    margin-right: 5px;
+}
+.navlink{
+    background-color: white;
+    color: black;
+    height: 40px !important;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+}
+.navlink1{
+    background-color: black;
+    color: white;
+    padding: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+}
+.fa-nav{
+    background-color: black !important;
+    color: white;
+    border-radius: 20px !important;
+    padding: 10px;
+    }
+#user{
+    margin-left: 6px;
+
+}
+.col-2{
+    padding-left: 80px !important;
+    margin-top: 10px !important;
+    color: gray !important;
+}
+.sec{
+    margin-top: 20px;
+}
+.col-mb-5{
+ margin-left: 25px;
+ margin-top: 10px;
+}
+.listgroup{
+    list-style: none;
+        text-align: center;
+    padding-left: 400px;
+
+}
+.firstlist{
+    display: flex;
+
+}
+.secondlist{
+    display: flex;
+    justify-content: center;
+
+}
+.col-sm-10{
+    text-align: center !important;
+}
+.fa-circle-play{
+    padding-right: 10px;
+}
+.list{
+    padding: 7px;
+    font-size: 25px;
+}
+
+#range{
+    color: white;
+    width: 400px;
+
+}
+.playlistorginal{
+    padding: 20px 40px;
+}
+img{
+    width: 160px;
+    height: 150px;
+    border-radius: 15px !important;
+    padding: 10px;
+
+}
