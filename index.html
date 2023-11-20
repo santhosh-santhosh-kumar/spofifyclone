@@ -14,24 +14,26 @@
         <div class="col-md-3">
             <div class="card" style="width: 20.1rem;">
                 <div class="card-body">
-                        <h4><strong>Home</strong></h4>
+                        <h5 class="home"><strong><i class="fa-solid fa-house"></i>Home</strong></h5><br>
                         <p style="position: relative;"><input type="text" placeholder="search" id="search"></input></p>
                         <div class="searchDiv" id="sug" onmouseout="style.display='none'"></div>
                 </div>
               </div>
-              <div class="card" style="width: 20.1rem; margin-top: 10px; height: 410px;">
-
+              <div class="card" style="width: 20.1rem; margin-top: 10px; height: 392px;">
                 <div class="card-body recentCardList">
                         <!-- <div class="library">
                             <p id="lib"><i class="fa-solid fa-book"></i> Your Library</p>
-                            <p id="plus"><i class="fa-solid fa-plus"></i></p>
-                            <p><i class="fa-solid fa-arrow-right"></i></p>
                         </div> -->
-                        <h5><strong>Recently played</strong></h5>
+                        <h5><strong>Recently played
+                          <!-- <i class="fa-solid fa-plus"></i>
+                          <i class="fa-solid fa-arrow-right"></i> -->
+                        </strong></h5>
                         <div class="playlist">    
                             <span id="div">
-                              <p><strong>Create Your first playlist</strong></p>
-                              <p>It's easy, we'll help you</p>
+                              <div class="new">
+                              <p class="createList1"><strong>Create Your first playlist</strong></p>
+                              <p class="createList2">It's easy, we'll help you</p>
+                              </div>
                             </span>
                         </div>
                        
@@ -69,7 +71,7 @@
                 <div class="container sec">
                     <div class="row">
                       <div class="col-10">
-                        <h3><strong>Favorities</strong></h3>
+                        <h3><strong>Favorites</strong></h3>
                       </div>
                       <div class="col-2" style="cursor: pointer;" id="favShowAll">Show all</div>
                     </div>
