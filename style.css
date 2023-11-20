@@ -128,6 +128,7 @@ img{
 .card1{
     position: relative;
     margin-left: 20px !important;
+    background: rgba(128, 128, 128, 0.103) !important;
 }
 
 .playaudio{
@@ -304,4 +305,8 @@ input[type="range"] {
     }
     h4{
         margin: 10px 0px 20px 0px;
+    }
+    .recentButton{
+        margin-top: 10px;
+        color: rgb(55, 174, 55);
     }

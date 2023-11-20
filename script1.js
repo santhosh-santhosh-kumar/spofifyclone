@@ -118,7 +118,7 @@ playlist.forEach((s, i) => {
 function createSongCard(arrayDetails, i) {
     return `
     <div class="col-mg-5 displayList">
-    <div class="card card1" style="width: 11rem; background: rgba(128, 128, 128, 0.103) !important;">
+    <div class="card card1" style="width: 11rem;">
     <img src=${arrayDetails.img} class="card-img-top" alt="...">
     <i class="fa-regular fa-heart fav" id="${arrayDetails.id}" style="backgroundcolor:white"></i>
     <i class="fa-solid fa-play playButton" id="${arrayDetails.id}" data="${arrayDetails.id}"></i>
@@ -196,28 +196,25 @@ favShowAll.addEventListener('click',()=>{
 
 })
 
-
+let index=0
 const recentPlayed = new Array()
 //play function start
 const getSongIndex = document.querySelectorAll('.playButton').forEach((a) => {
     a.addEventListener('click', (event) => {
         const index = event.target.id
-        console.log("index",index)
-        console.log("a",a)
         playSong(index)  //=> call masterplay function
         recentlyPlay()   //=> call recently play fuction 
-        nextSongPlay(a)  //=> call nextplay song function
-        preSongPlay(a)   //=> call previous song play function    
-    })
+})
 
 })
+
+
 let masterPlay = document.getElementById('masterPlay')
 
 //declare masterplay function
 
 
-function playSong(index, event) {
-//    console.log('e', event)
+function playSong(index) {
 
     audio.src = `./music/${index}.mp3`
     masterPlay.classList.remove('fa-circle-play')
@@ -239,6 +236,19 @@ function playSong(index, event) {
                         </ul>`
 
 }
+
+function musicEnd(){
+    if(index==playlist.length){
+        index=1;
+        }else{
+            index++;
+        }
+        playSong(index)
+}
+audio.addEventListener('ended',musicEnd)
+
+
+
 //master play play and pause
 masterPlay.addEventListener('click', () => {
     if (masterPlay.classList[1] == "fa-circle-play") {
@@ -269,7 +279,7 @@ function recentlyPlay() {
           <div class="col-md-auto">${r.track}</div>
       </li>
       <li class="recentlist">
-          <i class="fa-regular fa-circle-play recentButton" id="${r.id}" data-index="${r.id}"></i>
+          <i class="fa-solid fa-play recentButton" id="${r.id}" data-index="${r.id}"></i>
       </li>
   `
             const recentSongIndex = document.querySelectorAll('.recentButton').forEach((a) => {
@@ -354,45 +364,102 @@ function range() {
 const next = document.getElementById('nextSong')
 const pre = document.getElementById('preSong')
 
-
 //next song play event
-function nextSongPlay(i) {
-    let x=i.getAttribute('data')
-    next.addEventListener('click', (event) => {
-        console.log("i",i.getAttribute('data'))
-        audio.src = `./music/${parseInt(x) + 1}.mp3`
-        audio.play();
-        //    recentPlayed.unshift(index)
-        range()
-        if (i.id < playlist.length - 1) {
-            x = parseInt(x) + 1
-        
-            next.style.color = 'white'
-            pre.style.color = 'white'
+next.addEventListener('click',()=>{
+    index++;
+    if(index > Array.from(document.querySelectorAll('.displayList')).length){
+        index=1;
+    }
+    playSong(index)
+})
+pre.addEventListener('click',()=>{
+    index--;
+    if(index < 1){
+        index=Array.from(document.querySelectorAll('.displayList')).length;
+    }
+    playSong(index)
+})
 
-        } else {
-            //i.id=1;
-            next.style.color = 'grey'
-        }
-    })
+function nextSongPlay(index,i) {
+    // let x=index//i.getAttribute('data')
+    // next.addEventListener('click', (event) => {
+    //     audio.src = `./music/${parseInt(x) + 1}.mp3`
+    //     audio.play();
+    //     range()
+    //     if (x < playlist.length - 1) {
+    //         x = parseInt(x) + 1
+        
+    //         next.style.color = 'white'
+    //         pre.style.color = 'white'
+
+    //     } else {
+    //         next.style.color = 'grey'
+    //     }
+    //     const bottomPlayer = document.getElementById('bottomPlay')
+    // const bottomSet = playlist.filter(data => data.id == x)
+    // bottomPlayer.innerHTML = `   
+    //                   <ul class="recentUl">
+    //                     <li>
+    //                         <img src="${bottomSet[0].img}" class='recentImg bottomImg' alt="">
+    //                     </li>
+    //                     <li class="recentlist">
+    //                         <div class="col-md-auto">${bottomSet[0].track}</div>
+    //                     </li>
+    //                     </ul>`
+
+    // })
+
 }
 
 //preveious songs play event
 function preSongPlay(i) {
-    pre.addEventListener('click', () => {
-        audio.src = `./music/${i.id - 1}.mp3`
+    let x=i
+    console.log('x',x)
+    pre.addEventListener('click', (event) => {
+       // console.log("i",i.getAttribute('data'))
+        audio.src = `./music/${parseInt(x) - 1}.mp3`
+    //    console.log("x",x)
         audio.play();
+        //    recentPlayed.unshift(index)
         range()
-        if (i.id > 1) {
-            i.id = parseFloat(i.id) - 1
-            pre.style.color = 'white'
-            next.style.color = 'white'
+        console.log(x > 0)
+        if (x>0) {
+            x = parseInt(x) - 1
 
         } else {
-            //i.id=1
-            pre.style.color = 'grey'
-        }
+            //i.id=1;
+            next.style.color = 'grey'
+                }
+        const bottomPlayer = document.getElementById('bottomPlay')
+    const bottomSet = playlist.filter(data => data.id == x)
+  //  console.log('b', bottomSet)
+    // bottomPlayer.innerHTML = `   
+    //                   <ul class="recentUl">
+    //                     <li>
+    //                         <img src="${bottomSet[0].img}" class='recentImg bottomImg' alt="">
+    //                     </li>
+    //                     <li class="recentlist">
+    //                         <div class="col-md-auto">${bottomSet[0].track}</div>
+    //                     </li>
+    //                     </ul>`
+
     })
+
+    // console.log("i",i)
+    //  pre.addEventListener('click', () => {
+    //     audio.src =`${playlist[i-1].path}`
+    //     //./music/${preIndex[0].id - 1}.mp3
+    //     audio.play();
+    //     range()
+    //     if (i > 1) {
+    //     i--;
+    //         pre.style.color = 'white'
+    //         next.style.color = 'white'
+
+    //     } else {
+    //         pre.style.color = 'grey'
+    //     }
+    // })
 }
 
 //start time setup
