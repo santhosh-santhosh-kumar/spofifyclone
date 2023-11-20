@@ -29,6 +29,7 @@ body{
     color: white !important;
     background-color: black !important;
     letter-spacing: 0.5px;
+    text-transform: capitalize;
 }
 .fa-solid{
    margin-right: 10px;
@@ -276,15 +277,16 @@ input[type="range"] {
     
     }
     .searchDiv{
-        width: 60%;
-        height: 55vh;
+        width: 58%;
+        height: 100vh;
         background-color: black;
         color: white;
         position: absolute;
         z-index: 1;
-        border-radius: 0px;
+        border-radius: 5px;
         display: none;
-        top: 99px;
+        top: 101px;
+        text-decoration: none;
     }
     .content{
         padding-left: 10px;
@@ -335,10 +337,15 @@ input[type="range"] {
    }
    .addSong{
     position: absolute;
-    background-color:white;
-    color: black;
-    padding: 0px 7px px 7px;
+    color:white;
+    background-color: black;
+    left: 20px;
+    top: 23px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding: 4px 7px 4px 7px;
     border-radius: 5px;
+    font-size: 11px;
     display: none;
    }
    .home{
@@ -347,6 +354,7 @@ input[type="range"] {
    }
    input{
     background-color: rgba(0, 0, 0, 0.5);
+    color: white;
    }
    .fa-house{
     margin-right: 25px !important;
