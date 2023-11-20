@@ -120,8 +120,8 @@ function createSongCard(arrayDetails, i) {
     <div class="col-mg-5 displayList">
     <div class="card card1" style="width: 11rem; background: rgba(128, 128, 128, 0.103) !important;">
     <img src=${arrayDetails.img} class="card-img-top" alt="...">
-    <i class="fa-regular fa-heart fav" id="${arrayDetails.id}" data-index="${i}" style="backgroundcolor:white"></i>
-    <i class="fa-solid fa-play playButton" id="${arrayDetails.id}" data-index="${i}"></i>
+    <i class="fa-regular fa-heart fav" id="${arrayDetails.id}" style="backgroundcolor:white"></i>
+    <i class="fa-solid fa-play playButton" id="${arrayDetails.id}" data="${arrayDetails.id}"></i>
   <div class="card-body">
     <h5 class="card-title">${arrayDetails.movieName}</h5>
     <p class="card-text songTrack">${arrayDetails.track}</p>
@@ -173,7 +173,7 @@ show.addEventListener('click',()=>{
 favShowAll.addEventListener('click',()=>{
     const favShow=document.querySelectorAll('.displayFavList')
     const favShowAll=document.getElementById('favShowAll')
-    console.log('f',favShow)
+//    console.log('f',favShow)
 
     favShow.forEach((element,index)=>{
         if(index<5){
@@ -197,46 +197,28 @@ favShowAll.addEventListener('click',()=>{
 })
 
 
-
-
-
-// const hide = playlist.filter((data) => {
-//     //console.log(data.id>5)
-//     return data.id > 4
-// })
-// // const showHide=hide
-// console.log(hide)
-// hide.forEach((element) => {
-//     // const h=document.getElementById(`id${element.id}`).style.display="none"
-
-// })
-// 
-// show.addEventListener('click', () => {
-//     alert('hi')
-//     hide.forEach((element) => {
-//         const h1 = document.getElementById(`id${element.id}`)
-//         h1.style.display = "block"
-//         console.log(h1)
-//     })
-// })
-
-
 const recentPlayed = new Array()
 //play function start
 const getSongIndex = document.querySelectorAll('.playButton').forEach((a) => {
     a.addEventListener('click', (event) => {
         const index = event.target.id
-        playSong(index, a)  //=> call masterplay function
+        console.log("index",index)
+        console.log("a",a)
+        playSong(index)  //=> call masterplay function
         recentlyPlay()   //=> call recently play fuction 
         nextSongPlay(a)  //=> call nextplay song function
-        preSongPlay(a)   //=> call previous song play function
+        preSongPlay(a)   //=> call previous song play function    
     })
+
 })
 let masterPlay = document.getElementById('masterPlay')
 
 //declare masterplay function
+
+
 function playSong(index, event) {
 //    console.log('e', event)
+
     audio.src = `./music/${index}.mp3`
     masterPlay.classList.remove('fa-circle-play')
     masterPlay.classList.add('fa-circle-pause')
@@ -245,7 +227,7 @@ function playSong(index, event) {
     range()
     const bottomPlayer = document.getElementById('bottomPlay')
     const bottomSet = playlist.filter(data => data.id == index)
-    console.log('b', bottomSet)
+  //  console.log('b', bottomSet)
     bottomPlayer.innerHTML = `   
                       <ul class="recentUl">
                         <li>
@@ -276,7 +258,7 @@ function recentlyPlay() {
     div.innerHTML = "";
     recentPlayed.forEach((e) => {
         const r = playlist.find((i) => i.id == e)
-        console.log('r', r)
+    //    console.log('r', r)
         if (r) {
             div.innerHTML += `
    <ul class="recentUl">
@@ -319,7 +301,7 @@ likedSongs.forEach((like) => {
             })
             // console.log(favCard)
             likeSong.push(favCard[0])
-            console.log(likeSong)
+      //      console.log(likeSong)
             favSongUpdate()
         } else {
             like.classList.remove('fa-solid')
@@ -327,12 +309,9 @@ likedSongs.forEach((like) => {
             const favCard1 = playlist.filter((data) => {
                 return data.id == SongId
             })
-            console.log(favCard1)
+        //    console.log(favCard1)
             const find = likeSong.findIndex((e) => e.movieName == favCard1[0].movieName)
-            console.log(find)
-            console.log(likeSong)
             likeSong.splice(find, 1)
-            console.log(likeSong)
             favSongUpdate()
         }
     })
@@ -378,14 +357,16 @@ const pre = document.getElementById('preSong')
 
 //next song play event
 function nextSongPlay(i) {
-    next.addEventListener('click', () => {
-        console.log(i.id)
-        audio.src = `./music/${parseInt(i.id) + 1}.mp3`
+    let x=i.getAttribute('data')
+    next.addEventListener('click', (event) => {
+        console.log("i",i.getAttribute('data'))
+        audio.src = `./music/${parseInt(x) + 1}.mp3`
         audio.play();
         //    recentPlayed.unshift(index)
         range()
         if (i.id < playlist.length - 1) {
-            i.id = parseFloat(i.id) + 1
+            x = parseInt(x) + 1
+        
             next.style.color = 'white'
             pre.style.color = 'white'
 
@@ -449,12 +430,12 @@ audio.addEventListener('timeupdate', () => {
 let vol = document.getElementById('volume')
 console.log(vol.value)
 vol.onchange = () => {
-    console.log(vol.value)
+    //console.log(vol.value)
     //alert('hi')
     audio.volume = parseInt(vol.value) / 100
 }
 let mute = document.getElementById('mute')
-console.log(mute)
+//console.log(mute)
 
 // mute.onclick=()=>{
 // console.log(mute.classList)
@@ -491,7 +472,7 @@ list.addEventListener('click',(event)=>{
 })
 })
 let input=document.getElementsByTagName('input')[0]
-console.log('input',input)
+//console.log('input',input)
 const search=document.getElementById('search')
 
 search.addEventListener('input',()=>{
@@ -539,7 +520,7 @@ playlist.forEach((data)=>{
     searchId.forEach((e)=>{
         if(e.classList[2]==data.id){
             search.value=e.textContent
-            console.log(search.value)
+  //          console.log(search.value)
         }
 
     })
