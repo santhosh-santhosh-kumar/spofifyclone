@@ -351,3 +351,6 @@ input[type="range"] {
    .fa-house{
     margin-right: 25px !important;
    }
+   .songTrack{
+    color: rgb(159, 152, 152);
+   }
