@@ -1,10 +1,9 @@
 .no-gutters{
     margin-top: 6px !important;
 }
-
 .col-md-9{
     background-color: rgb(28, 25, 25) !important;
-    height: 550px;
+    height: 538px;
     margin-right: 0px;
     border-radius: 10px;
     border-right: 5px solid black;
@@ -23,15 +22,14 @@
    display: flex;
    justify-content: right;
 }
-#lib{
-    width:300px
-}
+
 #plus{
     width: 40px;
 }
 body{
     color: white !important;
     background-color: black !important;
+    letter-spacing: 0.5px;
 }
 .fa-solid{
    margin-right: 10px;
@@ -81,30 +79,26 @@ body{
     margin-left: 6px;
 
 }
-.col-2{
-    padding-left: 80px !important;
-    margin-top: 10px !important;
-    color: gray !important;
-}
 .col-mb-5{
  margin-left: 25px;
 
 }
 .listgroup{
+   display: flex;
     list-style: none;
     text-align: center;
+    margin-top: 20px;
 }
-.firstlist{
+/* .firstlist{
     display: flex;
-    padding-left: 400px;
-}
-.secondlist{
-    display: flex;
-    justify-content: center;
-    padding-left: 170px;
-}
+    padding-left: 00px;
+
+} */
 
 .fa-circle-play{
+    padding-right: 10px;
+}
+.fa-circle-pause{
     padding-right: 10px;
 }
 .list{
@@ -117,7 +111,7 @@ body{
 
 }
 .playlistorginal{
-    padding: 20px 40px;
+    padding: 0px 20px 20px 40px;
 }
 img{
     width: 160px;
@@ -133,24 +127,181 @@ img{
 
 .card1{
     position: relative;
+    margin-left: 20px !important;
 }
-.play{
-    position: absolute;
-    right: 10px;
-    top: -60px;
-    padding: 18px;
-    background-color: #1db954;
-    border-radius: 100%;
-    opacity: 0;
-    transition: all ease 0.4s;
-}
+
 .playaudio{
  color: rgba(90, 86, 86, 0.493) !important;
+ /* display: none;  */
 }
-input[type='range'] {
-    overflow: hidden;
-    width: 80px;
-   }
-  input[type="range"] {
-    accent-color: grey;
+  audio{
+    width:20px;
+    color: white;
   }
+.sec{
+    margin-top: 30px;
+}
+.heart{
+   background: none;
+    border: none;
+    position: absolute;
+    left:130px;
+    top:10px;
+    color: white;
+}
+
+.button{
+    background: none;
+    border: none;
+}
+.col-mg-5{
+    margin-top: 25px !important;
+}
+.recentImg{
+    height: 70px !important;
+    width: 70px !important;
+}
+.recentUl{
+    display: flex;
+    list-style-type: none;
+    padding-right: 10px;
+}
+.recentlist{
+    margin-top: 20px;
+}
+#preSong,#nextSong{
+    color: aliceblue;
+}
+.recentCardList{
+    overflow: auto !important;
+
+}
+.card1{
+    position: relative;
+}
+.fa-heart{
+    position: absolute;
+    left: 140px;
+    top: 15px;
+}
+.playButton{
+    position: absolute;
+    top: 80px;
+    left: 60px;
+    font-size: 20px;
+    background-color: rgb(76, 181, 76);
+    padding: 13px 12px 13px 15px;
+    text-align: center;
+    border-radius: 100%;
+    color: black;
+}
+input{
+    outline: none;
+}
+.fa-volume-low{
+    color: white !important;
+}
+.col-md-auto{
+    font-size: 15px !important;
+}
+.bottomBar{
+    margin-top: 18px;
+    font-size: 20px;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: gray;
+    color: white;
+    cursor: pointer;
+    height: 3px;
+  }
+  .bottomBar1{
+    margin-top: 5px;
+  }
+.animate {
+    width: 50px;
+    height: 10px;
+    margin: 10px auto;
+    }
+    .animationPlay {
+    display: inline-block;
+    background-color: green;
+    width: 2px;
+    height: 10px;
+    animation: wave 1s linear infinite;
+    }
+    .a1 {
+    animation-delay: .0s;
+    }
+    .a2 {
+    animation-delay: .2s;
+    }
+    .a3 {
+    animation-delay: .3s;
+    }
+    .a4 {
+    animation-delay: .4s;
+    }
+    .a5 {
+    animation-delay: .5s;
+    }
+    .a6 {
+    animation-delay: .6s;
+    }
+    .a7 {
+    animation-delay: .7s;
+    }
+    .a8 {
+    animation-delay: .8s;
+    }
+    .a9 {
+    animation-delay: .9s;
+    }
+    .a10 {
+    animation-delay: 1.0s;
+    }
+    
+    
+    @keyframes wave {
+    50%{
+        transform: scaleY(80);
+        transform: scaleY(5);
+    }
+    
+    }
+    .searchDiv{
+        width: 100%;
+        height: 55vh;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        position: absolute;
+        z-index: 1;
+        border-radius: 10px;
+        display: none;
+    }
+    .content{
+        padding-left: 10px;
+        margin: 10px;
+        color: white;
+    }
+    .card i{
+        display: none;
+    }
+    .card:hover i{
+        display: block;
+    }
+    #search{
+        border: none;
+        border-radius: 5px;
+    }
+    #animation{
+       visibility: hidden;
+    }
+    .card1:hover{
+        background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+    h4{
+        margin: 10px 0px 20px 0px;
+    }

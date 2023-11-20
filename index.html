@@ -14,28 +14,27 @@
         <div class="col-md-3">
             <div class="card" style="width: 20.1rem;">
                 <div class="card-body">
-                        <p><span className="fa-li"><i class="fa-solid fa-house"></i></span>Home</p>
-                        <p><span className="fa-li"><i class="fa-solid fa-magnifying-glass"></i></span> Search</p>
+                        <h4><strong>Home</strong></h4>
+                        <p style="position: relative;"><input type="text" placeholder="search" id="search"></input></p>
+                        <div class="searchDiv" id="sug" onmouseout="style.display='none'"></div>
                 </div>
               </div>
-              <div class="card" style="width: 20.1rem; margin-top: 10px; height: 420px;">
-                <div class="card-body">
-                    
-                        <div class="library">
+              <div class="card" style="width: 20.1rem; margin-top: 10px; height: 410px;">
+
+                <div class="card-body recentCardList">
+                        <!-- <div class="library">
                             <p id="lib"><i class="fa-solid fa-book"></i> Your Library</p>
                             <p id="plus"><i class="fa-solid fa-plus"></i></p>
                             <p><i class="fa-solid fa-arrow-right"></i></p>
-                        </div>
+                        </div> -->
+                        <h5><strong>Recently played</strong></h5>
                         <div class="playlist">    
-                            <h5>Create your first playlist</h5>
-                            <p>It's easy we will help you</p>
-                            <a href="#" class="btn btn-primary">Create playlist</a>
+                            <span id="div">
+                              <p><strong>Create Your first playlist</strong></p>
+                              <p>It's easy, we'll help you</p>
+                            </span>
                         </div>
-                        <div class="playlist">    
-                            <h5>Let's find some podecasts to follow</h5>
-                            <p>We'll keep ypu updated on new episodes</p>
-                            <a href="#" class="btn btn-primary">Browes podecasts</a>
-                        </div>
+                       
                     </div>
               </div>
         </div>
@@ -47,21 +46,19 @@
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
                   <div class="col-5">
-                    <a class="bar navlink">Explore Premium</a>
+                    <a class="bar navlink">Explore Preminum</a>
                     <span class="bar navlink1"><i class="fa-regular fa-circle-down"></i> Install App</span>
                     <i class="fa-regular fa-bell fa-nav"></i>
-                    <i class="fa-regular fa-user fa-nav" id="user"></i>
                   </div>
                 </div>
               </div>
-  
               <section>
                 <div class="container sec">
                     <div class="row">
                       <div class="col-10">
-                        <h3>Playlist</h3>
+                        <h3><strong>Playlist</strong></h3>
                       </div>
-                      <div class="col-2">Show all</div>
+                      <div class="col-2"><span id="showAll" style="cursor: pointer;">Show all</span></div>
                     </div>
                   </div>
                 <div class="container playlistorginal">
@@ -72,23 +69,9 @@
                 <div class="container sec">
                     <div class="row">
                       <div class="col-10">
-                        <h3>Artist</h3>
+                        <h3><strong>Favorities</strong></h3>
                       </div>
-                      <div class="col-2">Show all</div>
-                    </div>
-                  </div>
-                <div class="container playlistorginal">
-                    <div class="row" id="row2"></div> 
-                </div>        
-                 
-              </section>
-              <section>
-                <div class="container sec">
-                    <div class="row">
-                      <div class="col-10">
-                        <h3>Favorities</h3>
-                      </div>
-                      <div class="col-2">Show all</div>
+                      <div class="col-2" style="cursor: pointer;" id="favShowAll">Show all</div>
                     </div>
                   </div>
                 <div class="container playlistorginal">
@@ -97,40 +80,38 @@
                 </div>        
                  
               </section>
-
-
         </div>
     </div>
 
-    <div class="container playaudio">
+    <!-- <div class="container playaudio" id="footer">
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-12"> -->
         <ul class="listgroup">
-          <div class="firstlist">
-          <li class="list"><i class="fa-solid fa-shuffle"></i></li>
-          <li class="list"><i class="fa-solid fa-backward-step"></i></li>
-          <li class="list"><i class="fa-regular fa-circle-play"></i></li>
-          <li class="list"><i class="fa-solid fa-forward-step"></i></li>
-          <li class="list"><i class="fa-solid fa-repeat"></i></li>
-          </div>
-          <div class="secondlist">
-            <li class="list">-:--</li>
-            <li class="list"><input type="range" name="range" min="0" max="100" id="range"></input></li>
-            <li class="list">-:--</li>
-  
-          </div>
-        </ul>
-      </div>
-    <div class="col-sm-2">
-      <ul class="bottom">
-        <li><i class="fa-solid fa-grip-lines"></i></li>
-        <!-- <li><i class="fa-solid fa-signal" style="color: white;"></i></li> -->
-        <li><i class="fa-solid fa-volume-low"></i></li>
-        <li><input type="range" class="range1"></li>
+          <li class="list bottomBar">
+            <div class="animate" id="animation">
+              <span class="a1 animationPlay"></span>
+              <span class="a2 animationPlay"></span>
+              <span class="a3 animationPlay"></span>
+              <span class="a4 animationPlay"></span>
+              <span class="a5 animationPlay"></span>
+             </div>
+          </li>
+          <li class="list" id="bottomPlay"></li>
+          <li class="list bottomBar"><i class="fa-solid fa-shuffle"></i></li>
+          <li class="list bottomBar"><i class="fa-solid fa-backward-step" id="preSong"></i></li>
+          <li class="list bottomBar"><i class="fa-solid fa-circle-play" id=masterPlay style="color: white;"></i></li>
+          <li class="list bottomBar"><i class="fa-solid fa-forward-step" id="nextSong"></i></li>
+          <li class="list bottomBar"><i class="fa-solid fa-repeat"></i></button></li>
+          <li class="list bottomBar" id="startTime">00:00</li>
+          <li class="list bottomBar1"><input type="range" name="range" min="0" max="100" id="range" value="0"></input></li>
+          <li class="list bottomBar" id="endTime">00:00</li>
+          <li class="list bottomBar"><i class="fa-solid fa-volume-low" id="mute"></i></li>
+          <li class="list bottomBar1"><input type="range" class="range1"  id="volume" min="0" max="100" value="50"></li>
       </ul>
-    </div>
-  </div>
+      
+  <!-- </div>
 </div>
-    <script src="script.js"></script>
+    </div> -->
+<script src="script1.js"></script>
 </body>
 </html>
