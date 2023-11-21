@@ -2,7 +2,7 @@
 const playlist = [
     {
         hits: 'Love hits',
-        movieName: 'Tollywood Hits',
+        movieName: 'Top-global',
         track: 'Elankaathu...',
         id: '1',
         year: '2023',
@@ -12,7 +12,7 @@ const playlist = [
     {
         hits: 'Rock hits',
         path: "/music/2.mp3",
-        movieName: 'Hollywood Hits',
+        movieName: 'Top-india',
         track: 'kannana kanne...',
         id: '2',
         year: '2023',
@@ -22,14 +22,14 @@ const playlist = [
         hits: 'Dance hits',
         track: 'kannalane...',
         id: '3',
-        movieName: 'Mollywood Hits',
+        movieName: 'hit-loves',
         path: "/music/3.mp3",
         year: '2023',
         img: 'https://i.scdn.co/image/ab67616d00001e0206785c864b949b8e85fe0d63'
     },
     {
         hits: 'party hits',
-        movieName: 'Bollywood Hits',
+        movieName: 'top viral',
         track: 'Nee paartha..',
         path: "/music/4.mp3",
         id: '4',
@@ -38,7 +38,7 @@ const playlist = [
     },
     {
         track: 'oru paathi..',
-        movieName: 'Kollywood Hits',
+        movieName: 'sad Hits',
         hits: 'Melody hits',
         id: '5',
         path: "/music/5.mp3",
@@ -137,7 +137,8 @@ const playlist = [
     }
 ]
 const bottomPlayer = document.getElementById('bottomPlay')
-
+let sug=document.getElementById('searchUl')
+let userSearch=document.getElementById('searchUl')
 bottomPlayer.innerHTML = `   
     <ul class="bottomUl">
     <li>
@@ -181,7 +182,6 @@ let addFavList=document.querySelectorAll('.fa-heart').forEach((e)=>{
     e.addEventListener('click',(event)=>{
      //alert('hi')
      let e=event.target.id
-     console.log(document.querySelectorAll('addSong'))
      document.querySelectorAll('.addSong').forEach((data,index)=>{
         console.log(data.getAttribute('data-id'))
             if(data.getAttribute('data-id')==e){
@@ -285,7 +285,7 @@ let masterPlay = document.getElementById('masterPlay')
 
 
 function playSong(index) {
-
+    
     audio.src = `./music/${index}.mp3`
     masterPlay.classList.remove('fa-circle-play')
     masterPlay.classList.add('fa-circle-pause')
@@ -338,8 +338,11 @@ let recentPlayList=[]
 function recentlyPlay() {
     div.innerHTML = "";
     recentPlayed.forEach((e) => {
+       // console.log(recentPlayList)
+        recentPlayList.forEach((data)=>{
+            console.log(data)
+        })
         const r = playlist.find((i) => i.id == e)
-    //    console.log('r', r)
         if (r) {
             div.innerHTML += `
                                 <div class="recentBody" id="${r.id}" name="recentPlay">
@@ -355,11 +358,9 @@ function recentlyPlay() {
                                        </div>
                                 </div>`
                                 recentPlayList.push(div.innerHTML)
-//                               console.log(recentPlayList)
                                 let recentCardBody=document.querySelectorAll('.recentBody')
                                 let xMark=document.querySelectorAll('.fa-xmark').forEach((element)=>{
                                     element.addEventListener('click',(event)=>{
-                                        console.log(recentPlayed)
                                         const y=event.target.id
                                         let arr=recentPlayed.forEach((e)=>{
                                         document.querySelectorAll('.recentBody').forEach((e,index)=>{
@@ -379,7 +380,17 @@ function recentlyPlay() {
             const recentSongIndex = document.querySelectorAll('.recentButton').forEach((a) => {
                 a.addEventListener('click', (event) => {
                     const x = event.target.id
-                    playSong(x)
+                    console.log(a.classList)
+                    if(a.classList.contains("fa-play")){
+                        playSong(x)
+                        a.classList.remove('fa-play')
+                        a.classList.add('fa-pause')
+                    }else{
+                        audio.pause()
+                        a.classList.add('fa-play')
+                        a.classList.remove('fa-pause')
+
+                    }
                 })
             })
         }
@@ -544,26 +555,68 @@ let mute = document.getElementById('mute')
 
 
 
-let sug=document.getElementById('sug')
+
 playlist.forEach((song)=>{
- let list=document.createElement('a')
- list.classList.add('addList')
- list.innerHTML=`
- <div class="content ${song.id}" id=id${song.id} >
+//  let list=document.createElement('li')
+//  let anchorTag=document.createElement('a')
+ //list.classList.add('addList')
+ sug.innerHTML+=`
+ <li class="searchLi" id="searchList">
+ <a class="content" id=id${song.id}>
+ 
  ${song.track}
- </div>`
- sug.appendChild(list)
-list.addEventListener('click',(event)=>{
-  event.preventDefault();
-  let content=event.currentTarget.querySelector('.content').textContent
+ </a>
+ </li>`
+
+ // sug.appendChild(list)
+// list.addEventListener('click',(event)=>{
+//   event.preventDefault();
+let aTag=document.querySelectorAll('.content')
+aTag.forEach((element)=>{
+    element.addEventListener('click',()=>{
+       search.value=element.textContent
+       //userSearch.style.display="none"
+        let v=search.value.toLowerCase()
+        let item=search.getElementsByTagName('a')
+        Array.from(item).forEach((e)=>{
+            console.log('hi')
+            let ele=e.querySelector('content')
+            let eleValue=ele.textContent||ele.innerHTML
+            if(eleValue.toLowerCase().includes(input.value)){
+                e.style.display="block";
+            }else{
+                e.style.display="none";
+            }
+            search.style.display=input.value?'':"none"
+        })
+    })
 })
+ 
 })
+
+
+//filter suggestion content
+let search=document.getElementById('search')
+let filter, ul, li, a, i, txtValue;
+function keyUp(){
+    filter=search.value.toUpperCase();
+    ul=document.getElementById('searchUl')
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "block";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+ }
 
 
 
 let input=document.getElementsByTagName('input')[0]
 //console.log('input',input)
-const search=document.getElementById('search')
 
 search.addEventListener('input',()=>{
  //console.log(search.value)
@@ -594,13 +647,14 @@ if(trackName.includes(v)){
 }) 
  
 })
-// sug.addEventListener('onmouseout',()=>{
-//     alert('hi')
-//     sug.style.display="none";
-// })
-
-search.addEventListener('click',()=>{
-    document.getElementById('sug').style.display="block";
+// alert(search.value)
+// console.log(search.value)
+search.addEventListener('input',()=>{
+    if(!search.value){
+        document.getElementById('sug').style.display="none";        
+    }else{
+        document.getElementById('sug').style.display="block";
+    }
 
 })
 
@@ -617,10 +671,7 @@ playlist.forEach((data)=>{
     
 })
 
-search.addEventListener('onmouseout',()=>{
-    sug.style.display="none"
- 
-})
+
 audio.onplay=()=>{
     let ani=document.getElementById('animation')
     ani.style.visibility="visible" 
@@ -629,8 +680,7 @@ audio.onpause=()=>{
     document.getElementById('animation').style.visibility="hidden"
 }
 
-//x-mark remove section
-
-
-
+function displayMore(){
+    document.getElementById('sug').style.display="none";    
+}
 

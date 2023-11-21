@@ -1,3 +1,8 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box
+}
 .no-gutters{
     margin-top: 6px !important;
 }
@@ -204,7 +209,7 @@ img{
     left: 60px;
     font-size: 20px;
     background-color: rgb(29,185,84);
-    padding: 13px 12px 13px 15px;
+    padding: 11px 12px 12px 15px;
     text-align: center;
     border-radius: 100%;
     color: black;
@@ -226,7 +231,6 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     background: gray;
-    color: white;
     cursor: pointer;
     height: 3px;
   }
@@ -238,7 +242,7 @@ input[type="range"] {
     height: 10px;
     margin: 10px auto;
     }
-    .animationPlay {
+.animationPlay {
     display: inline-block;
     background-color:rgb(29,185,84);
     width: 2px;
@@ -286,21 +290,27 @@ input[type="range"] {
     }
 
     .searchDiv{
-        width: 58%;
-        height: 100vh;
-        background-color: black;
+        width: 80%;
+        height: 50vh;
         color: white;
         position: absolute;
         z-index: 1;
         border-radius: 5px;
         display: none;
         top: 101px;
+        right: 87px;
         text-decoration: none;
     }
     .content{
-        padding-left: 10px;
-        margin: 10px;
+        padding-bottom: 10px;
+        padding-right: 0px;
+        color:rgb(29,185,84)
+    }
+    .content:hover{
         color: white;
+        text-decoration: none;
+
+    
     }
     .card1 i{
         display: none;
@@ -323,7 +333,7 @@ input[type="range"] {
     }
     .recentButton{
         margin-top: px;
-        color: rgb(55, 174, 55);
+        color: white;
     }
     .bottomUl{
         display: flex;
@@ -371,3 +381,24 @@ input[type="range"] {
    .songTrack{
     color: rgb(159, 152, 152);
    }
+   #searchUl{
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+   }
+   .searchLi{
+    margin-bottom: 5px;
+    background-color: black;
+    padding-left: 10px;
+   }
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background-color:white;
+    overflow: visible;
+    cursor: pointer;
+  }
+
+  
