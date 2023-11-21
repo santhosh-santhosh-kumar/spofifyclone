@@ -15,21 +15,17 @@
             <div class="card" style="width: 20.1rem;">
                 <div class="card-body">
                         <h5 class="home"><strong><i class="fa-solid fa-house"></i>Home</strong></h5><br>
-                        <p style="position: relative;"><input type="text" placeholder="search" id="search" onkeyup="keyUp()"></input></p>
+                        <p style="position: relative;"><input type="text" placeholder="search" id="search" onkeyup="keyUp()" ></input></p>
                         <div class="searchDiv" id="sug">
                           <ul id="searchUl" onmouseout="displayMore()">
 
-                        </ul></div>
+                        </ul>
+                      </div>
                 </div>
               </div>
               <div class="card" style="width: 20.1rem; margin-top: 10px; height: 392px;">
                 <div class="card-body recentCardList">
-                        <!-- <div class="library">
-                            <p id="lib"><i class="fa-solid fa-book"></i> Your Library</p>
-                        </div> -->
                         <h5><strong>Recently played
-                          <!-- <i class="fa-solid fa-plus"></i>
-                          <i class="fa-solid fa-arrow-right"></i> -->
                         </strong></h5>
                         <div class="playlist">    
                             <span id="div">
@@ -87,10 +83,7 @@
               </section>
         </div>
     </div>
-
-    <!-- <div class="container playaudio" id="footer">
-    <div class="row">
-      <div class="col-sm-12"> -->
+      <div>
         <ul class="listgroup">
           <li class="list bottomBar">
             <div class="animate" id="animation">
@@ -103,18 +96,17 @@
           </li>
           <li class="list" id="bottomPlay" style="width: 300px;"></li>
           <li class="list bottomBar"><i class="fa-solid fa-backward-step" id="preSong"></i></li>
-          <li class="list bottomBar"><i class="fa-solid fa-circle-play" id=masterPlay style="color: white;"></i></li>
+          <li class="list bottomBar"><i class="fa-solid fa-circle-play" id=masterPlay style="color: white; margin-left: 5px;"></i></li>
           <li class="list bottomBar"><i class="fa-solid fa-forward-step" id="nextSong"></i></li>
-          <li class="list bottomBar" id="startTime">00:00</li>
-          <li class="list bottomBar1"><input type="range" name="range" min="0" max="100" id="range" value="0"></input></li>
-          <li class="list bottomBar" id="endTime">00:00</li>
+          <li class="list bottomBar" id="startTime" style="font-size: 15px; margin-top: 22px;">00:00</li>
+          <li class="list bottomBar1"><input type="range" name="range" min="0" id="range" value="0"></input></li>
+          <li class="list bottomBar" id="endTime" style="font-size: 15px; margin-top: 22px;">00:00</li>
           <li class="list bottomBar"><i class="fa-solid fa-volume-low" id="mute"></i></li>
           <li class="list bottomBar1"><input type="range" class="range1"  id="volume" min="0" max="100" value="100"></li>
       </ul>
       
-  <!-- </div>
-</div>
-    </div> -->
+  </div>
+
 <script src="script1.js"></script>
 </body>
 </html>

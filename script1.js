@@ -151,7 +151,7 @@ bottomPlayer.innerHTML = `
 //audio tag define
 const audio = new Audio("/music/1.mp3")
 const songArray = new Array()
-
+range()
 //display each play list like a card
 const recentList = document.getElementById('div')
 playlist.forEach((s, i) => {
@@ -465,18 +465,14 @@ function favSongUpdate() {
 //slider control
 function range() {
     const slide = document.getElementById('range')
-    setInterval(() => {
-        slide.max = audio.duration;
-        slide.value = audio.currentTime
-    }, 500)
-    slide.onchange = function () {
-        audio.currentTime = slide.value;
-    }
+    audio.onloadedmetadata = () => slide.max = audio.duration
+    slide.onchange = () => audio.currentTime = slide.value
+    audio.ontimeupdate = () => slide.value = audio.currentTime
 }
-const next = document.getElementById('nextSong')
-const pre = document.getElementById('preSong')
 
 //next song play event
+const next = document.getElementById('nextSong')
+
 next.addEventListener('click', () => {
     index++;
     if (index > Array.from(document.querySelectorAll('.displayList')).length) {
@@ -484,12 +480,12 @@ next.addEventListener('click', () => {
     }
     playSong(index)
     range()
-    recentlyPlay()   //=> call recently play fuction
+
 })
 
 
 //preveious songs play event
-
+const pre = document.getElementById('preSong')
 pre.addEventListener('click', () => {
     index--;
     if (index < 1) {
@@ -497,7 +493,6 @@ pre.addEventListener('click', () => {
     }
     playSong(index)
     range()
-    recentlyPlay()   //=> call recently play fuction
 })
 
 

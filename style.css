@@ -116,7 +116,7 @@ overflow: auto !important;
 
 #range{
     width: 400px;
-
+    margin-top: 15px;
 }
 .playlistorginal{
     padding: 0px 20px 20px 40px;
@@ -283,7 +283,7 @@ input[type="range"] {
     }
 
     .searchDiv{
-        width: 80%;
+        width: 78%;
         height: 50vh;
         color: white;
         position: absolute;
@@ -292,6 +292,7 @@ input[type="range"] {
         display: none;
         top: 101px;
         right: 87px;
+        left: 20px;
         text-decoration: none;
     }
     .content{
@@ -314,6 +315,9 @@ input[type="range"] {
     #search{
         border: none;
         border-radius: 5px;
+        padding-left: 10px;
+        padding-bottom: 5px;
+        width: 251px;
     }
     #animation{
        visibility: hidden;
