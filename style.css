@@ -10,6 +10,7 @@
     border-right: 5px solid black;
     overflow: auto !important;
 }
+
 .card{
     background-color:rgb(18,18,18) !important;
         /* background-color: rgb(28, 25, 25) !important; */
@@ -46,6 +47,13 @@ body{
   border: none !important;
   border-radius: 30px !important;
 }
+#div{
+overflow: auto !important;
+   }
+   ::-webkit-scrollbar{
+    background: none;
+   }
+
 .add{
     margin-top: 10px;
 }
@@ -276,6 +284,7 @@ input[type="range"] {
     }
     
     }
+
     .searchDiv{
         width: 58%;
         height: 100vh;

@@ -91,9 +91,9 @@ const playlist = [
         img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE0rkwCpJ5A8uBISyDIWbWMZMa7ntFdnMX6g&usqp=CAU'
     },
     {
-        hits: '',
+        hits: 'Siru Ponmani..',
         movieName: 'Tops Tamil',
-        track: 'Elankaathu...',
+        track: 'Siru Ponmani..',
         id: '11',
         year: '2023',
         path: "/music/11.mp3",
@@ -102,7 +102,7 @@ const playlist = [
     {
         hits: 'All Out Tamil',
         movieName: 'All Out Tamil',
-        track: 'Elankaathu...',
+        track: 'Pudhu Vellai...',
         id: '12',
         year: '2023',
         img: 'https://i.scdn.co/image/ab67706f00000003fba39c301a85043e199fff38',
@@ -111,7 +111,7 @@ const playlist = [
     {
         hits: '',
         movieName: '90s Tamil',
-        track: 'Elankaathu...',
+        track: 'Neethanae...',
         id: '13',
         year: '2023',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZJ1lq6YIy-mn1rrZ4TGVqNgMM8mMC-47Ccw&usqp=CAU',
@@ -120,7 +120,7 @@ const playlist = [
     {
         hits: '',
         movieName: 'Hot Hits Tamil',
-        track: 'Elankaathu...',
+        track: 'Margazhi-Poove...',
         id: '14',
         year: '2023',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_Us-Wh5WhhVINgJyOhnoqHwZMGJAUQT3GRs1BCGwWsETUFYqJ50tyZw4aEjK4v3uDQ1w&usqp=CAU',
@@ -129,7 +129,7 @@ const playlist = [
     {
         hits: '',
         movieName: 'Latest Tamil',
-        track: 'Elankaathu...',
+        track: 'Kadhal-Kanave...',
         id: '15',
         year: '2023',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5rnpnOD3yrtowWPjaeq9xykhhIK6imd9aXw&usqp=CAU',
@@ -438,6 +438,7 @@ function favSongUpdate() {
             a.addEventListener('click', (event) => {
                 const i = event.target.id
                 playSong(i)
+                range()
             })
         })
     })
@@ -465,6 +466,7 @@ next.addEventListener('click',()=>{
         index=1;
     }
     playSong(index)
+    range()
     recentlyPlay()   //=> call recently play fuction
 })
 //preveious songs play event
@@ -475,6 +477,7 @@ pre.addEventListener('click',()=>{
         index=Array.from(document.querySelectorAll('.displayList')).length;
     }
     playSong(index)
+    range()
     recentlyPlay()   //=> call recently play fuction
 })
 
