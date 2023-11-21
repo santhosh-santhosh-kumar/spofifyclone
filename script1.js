@@ -269,11 +269,12 @@ favShowAll.addEventListener('click',()=>{
 let index=0
 const recentPlayed = new Array()
 //play function start
+let arrayRecent=[]
 const getSongIndex = document.querySelectorAll('.playButton').forEach((a) => {
     a.addEventListener('click', (event) => {
         const index = event.target.id
         playSong(index)  //=> call masterplay function
-        recentlyPlay()   //=> call recently play fuction 
+        recentlyPlay(index)   //=> call recently play fuction 
 })
 
 })
@@ -285,12 +286,17 @@ let masterPlay = document.getElementById('masterPlay')
 
 
 function playSong(index) {
-    
     audio.src = `./music/${index}.mp3`
     masterPlay.classList.remove('fa-circle-play')
     masterPlay.classList.add('fa-circle-pause')
     audio.play();
-    recentPlayed.unshift(index)
+    recentPlayed.forEach((e)=>{
+        console.log(e,index)
+        if(e==!index){
+            recentPlayed.unshift(index)
+
+        }
+    })
     range()
     const bottomPlayer = document.getElementById('bottomPlay')
     const bottomSet = playlist.filter(data => data.id == index)
@@ -335,68 +341,86 @@ masterPlay.addEventListener('click', () => {
 
 //recently add
 let recentPlayList=[]
-function recentlyPlay() {
+let recentPlayList1=[]
+function recentlyPlay(index){
+    //console.log(recentPlayed)
     div.innerHTML = "";
-    recentPlayed.forEach((e) => {
-       // console.log(recentPlayList)
-        recentPlayList.forEach((data)=>{
-           // console.log(data)
-        })
-        const r = playlist.find((i) => i.id == e)
-        //console.log(r)
-        if (r) {
-            div.innerHTML += `
-                                <div class="recentBody" id="${r.id}" name="recentPlay">
-                                    <div class="recentUl">
-                                        <img src="${r.img}" class='recentImg' alt="" style="flex-grow: 1">
-                                    </div>
-                                    <div class="recentlist recentUl recentTrack" style="flex-grow: 8">
-                                        <div class="col-md-auto">${r.track}</div>
-                                    </div>
-                                    <div class="recentlist recentUl" style="flex-grow: 1">
-                                       <i class="fa-solid fa-play recentButton" id="${r.id}" data-index="${r.id}"></i>
-                                       <i class="fa-solid fa-xmark" id="${r.id}"></i>
-                                       </div>
-                                </div>`
-                                recentPlayList.push(div.innerHTML)
-                                let recentCardBody=document.querySelectorAll('.recentBody')
-                                let xMark=document.querySelectorAll('.fa-xmark').forEach((element)=>{
-                                    element.addEventListener('click',(event)=>{
-                                        const y=event.target.id
-                                        let arr=recentPlayed.forEach((e)=>{
-                                        document.querySelectorAll('.recentBody').forEach((e,index)=>{
-                                              if(e.getAttribute('id')==y){
-                                                recentPlayed.splice(index,1)
-                                                recentlyPlay()
-                                              }
-                                            })
-                                            
-                                        })
-                                        
-                                    })
-                                })
-                                
-
-
-            const recentSongIndex = document.querySelectorAll('.recentButton').forEach((a) => {
-                a.addEventListener('click', (event) => {
-                    const x = event.target.id
-                    console.log(a.classList)
-                    if(a.classList.contains("fa-play")){
-                        playSong(x)
-                        a.classList.remove('fa-play')
-                        a.classList.add('fa-pause')
-                    }else{
-                        audio.pause()
-                        a.classList.add('fa-play')
-                        a.classList.remove('fa-pause')
-
+    // recentPlayed.forEach((e) => {
+      //  console.log(e)
+        playlist.forEach((i) =>{
+            if(i.id==index){
+                recentPlayList.forEach((data,i)=>{
+                    console.log(data.id==index)
+                    if(data.id==index){
+                        recentPlayList.splice(i,1)
+                      console.log('r',recentPlayList)   
                     }
+                })   
+                recentPlayList.unshift(i)
+
+            }
+        })
+    // })
+    console.log(recentPlayList)
+    recentPlayList.forEach((s) => {
+        div.innerHTML += `
+                            <div class="recentBody" id="${s.id}" name="recentPlay">
+                                <div class="recentUl">
+                                    <img src="${s.img}" class='recentImg' alt="" style="flex-grow: 1">
+                                </div>
+                                <div class="recentlist recentUl recentTrack" style="flex-grow: 8">
+                                    <div class="col-md-auto">${s.track}</div>
+                                </div>
+                                <div class="recentlist recentUl" style="flex-grow: 1">
+                                   <i class="fa-solid fa-play recentButton" id="${s.id}" data-index="${s.id}"></i>
+                                   <i class="fa-solid fa-xmark" id="${s.id}"></i>
+                                   </div>
+                            </div>`
+          
+    });
+//    recentPlayed.push(div.innerHTML)
+    let recentCardBody=document.querySelectorAll('.recentBody')
+    let xMark=document.querySelectorAll('.fa-xmark').forEach((element)=>{
+        element.addEventListener('click',(event)=>{
+            const y=event.target.id
+            let arr=recentPlayList.forEach((e)=>{
+            document.querySelectorAll('.recentBody').forEach((e,index)=>{
+                  if(e.getAttribute('id')==y){
+                    recentPlayList.splice(index,1)
+                    recentlyPlay()
+                  }
                 })
+                
             })
-        }
+            
+        })
     })
+    
+    const recentSongIndex = document.querySelectorAll('.recentButton').forEach((a) => {
+        a.addEventListener('click', (event) => {
+            const x = event.target.id
+            console.log(a.classList)
+            if(a.classList.contains("fa-play")){
+                playSong(x)
+                a.classList.remove('fa-play')
+                a.classList.add('fa-pause')
+            }else{
+                audio.pause()
+                a.classList.add('fa-play')
+                a.classList.remove('fa-pause')
+
+            }
+        })
+    })
+
+
+
 }
+
+
+
+
+
 
 const row = document.getElementById('row3')
 const likedSongs = document.querySelectorAll('.fav')
