@@ -88,7 +88,7 @@ const playlist = [
         track: "Unnavidaa...",
         id: "10",
         path: "/music/10.mp3",
-        img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE0rkwCpJ5A8uBISyDIWbWMZMa7ntFdnMX6g&usqp=CAU'
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE0rkwCpJ5A8uBISyDIWbWMZMa7ntFdnMX6g&usqp=CAU'
     },
     {
         hits: 'Siru Ponmani..',
@@ -97,7 +97,7 @@ const playlist = [
         id: '11',
         year: '2023',
         path: "/music/11.mp3",
-        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWZ3lI5L_KaBqUjMU5Igx2NDi8EUVGJg9_dQ&usqp=CAU"
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWZ3lI5L_KaBqUjMU5Igx2NDi8EUVGJg9_dQ&usqp=CAU"
     },
     {
         hits: 'All Out Tamil',
@@ -137,8 +137,8 @@ const playlist = [
     }
 ]
 const bottomPlayer = document.getElementById('bottomPlay')
-let sug=document.getElementById('searchUl')
-let userSearch=document.getElementById('searchUl')
+let sug = document.getElementById('searchUl')
+let userSearch = document.getElementById('searchUl')
 bottomPlayer.innerHTML = `   
     <ul class="bottomUl">
     <li>
@@ -158,7 +158,7 @@ playlist.forEach((s, i) => {
     const row1 = document.getElementById('row1')
     const cardBody = createSongCard(s, i);
     row1.innerHTML += cardBody;
-    songArray.push(cardBody)    
+    songArray.push(cardBody)
 });
 
 function createSongCard(arrayDetails, i) {
@@ -178,104 +178,101 @@ function createSongCard(arrayDetails, i) {
 }
 
 //add favorite list notification
-let addFavList=document.querySelectorAll('.fa-heart').forEach((e)=>{
-    e.addEventListener('click',(event)=>{
-     //alert('hi')
-     let e=event.target.id
-     document.querySelectorAll('.addSong').forEach((data,index)=>{
-        console.log(data.getAttribute('data-id'))
-            if(data.getAttribute('data-id')==e){
-                data.style.display="block" 
-                setTimeout(()=>{
-                    data.style.display="none"
-                    if(data.innerHTML=="Removed favourtie"){
-                        data.innerHTML="Added favourtie"
-                    }else{
-                        data.innerHTML="Removed favourtie"
+let addFavList = document.querySelectorAll('.fa-heart').forEach((e) => {
+    e.addEventListener('click', (event) => {
+        //alert('hi')
+        let e = event.target.id
+        document.querySelectorAll('.addSong').forEach((data, index) => {
+            console.log(data.getAttribute('data-id'))
+            if (data.getAttribute('data-id') == e) {
+                data.style.display = "block"
+                setTimeout(() => {
+                    data.style.display = "none"
+                    if (data.innerHTML == "Removed favourtie") {
+                        data.innerHTML = "Added favourtie"
+                    } else {
+                        data.innerHTML = "Removed favourtie"
                     }
-                },1000)
+                }, 1000)
             }
-     })
+        })
     })
 })
 
 
 //show all and show less playlist
 
-let hide=document.querySelectorAll('.displayList')
-//console.log(hide)
+let hide = document.querySelectorAll('.displayList')
 const show = document.getElementById('showAll')
-hide.forEach((element,index)=>{
-    if(index<10){
-        element.style.display="block";
-    }else{
-        element.style.display="none";
+hide.forEach((element, index) => {
+    if (index < 10) {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
     }
-    show.innerHTML=`Show all`
+    show.innerHTML = `Show all`
 
 })
 
 
-show.addEventListener('click',()=>{
-    if(show.innerHTML=="Show all"){
-        hide.forEach((element)=>{
-            element.style.display="block";
-            show.innerHTML=`Show less`
+show.addEventListener('click', () => {
+    if (show.innerHTML == "Show all") {
+        hide.forEach((element) => {
+            element.style.display = "block";
+            show.innerHTML = `Show less`
         })
-    }else{
-        hide.forEach((element,index)=>{
-            if(index<10){
-                element.style.display="block";
-            }else{
-                element.style.display="none";
+    } else {
+        hide.forEach((element, index) => {
+            if (index < 10) {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
             }
-            show.innerHTML=`Show all`
-        
+            show.innerHTML = `Show all`
+
         })
-        
+
     }
 
 })
 
 //show all and show less favorite list cards
+favShowAll.addEventListener('click', () => {
+    const favShow = document.querySelectorAll('.displayFavList')
+    const favShowAll = document.getElementById('favShowAll')
+    //    console.log('f',favShow)
 
-
-favShowAll.addEventListener('click',()=>{
-    const favShow=document.querySelectorAll('.displayFavList')
-    const favShowAll=document.getElementById('favShowAll')
-//    console.log('f',favShow)
-
-    favShow.forEach((element,index)=>{
-        if(index<5){
-            element.style.display="block";
-        }else{
-            element.style.display="none";
+    favShow.forEach((element, index) => {
+        if (index < 5) {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
         }
-        favShow.innerHTML=`Show all`
-
+        favShow.innerHTML = `Show all`
     })
 
-    if(favShowAll.textContent=="Show all"){
-        favShow.forEach((element)=>{
-            element.style.display="block";
+    if (favShowAll.textContent == "Show all") {
+        favShow.forEach((element) => {
+            element.style.display = "block";
         })
-        favShowAll.innerHTML=`Show less`
-    }else{
-        
+        favShowAll.innerHTML = `Show less`
+    } else {
+
     }
 
 })
 
-let index=0
+let index = 0
 const recentPlayed = new Array()
+
 //play function start
-let arrayRecent=[]
+let arrayRecent = []
 const getSongIndex = document.querySelectorAll('.playButton').forEach((a) => {
     a.addEventListener('click', (event) => {
         const index = event.target.id
         playSong(index)  //=> call masterplay function
         recentlyPlay(index)   //=> call recently play fuction 
-})
+    })
 
 })
 
@@ -290,9 +287,9 @@ function playSong(index) {
     masterPlay.classList.remove('fa-circle-play')
     masterPlay.classList.add('fa-circle-pause')
     audio.play();
-    recentPlayed.forEach((e)=>{
-        console.log(e,index)
-        if(e==!index){
+    recentPlayed.forEach((e) => {
+        console.log(e, index)
+        if (e == !index) {
             recentPlayed.unshift(index)
 
         }
@@ -300,7 +297,6 @@ function playSong(index) {
     range()
     const bottomPlayer = document.getElementById('bottomPlay')
     const bottomSet = playlist.filter(data => data.id == index)
-  //  console.log('b', bottomSet)
     bottomPlayer.innerHTML = `   
                       <ul class="bottomUl">
                         <li>
@@ -313,15 +309,17 @@ function playSong(index) {
 
 }
 
-function musicEnd(){
-    if(index==playlist.length){
-        index=1;
-        }else{
-            index++;
-        }
-        playSong(index)
+//on music end function
+
+function musicEnd() {
+    if (index == playlist.length) {
+        index = 1;
+    } else {
+        index++;
+    }
+    playSong(index)
 }
-audio.addEventListener('ended',musicEnd)
+audio.addEventListener('ended', musicEnd)
 
 
 
@@ -340,28 +338,23 @@ masterPlay.addEventListener('click', () => {
 })
 
 //recently add
-let recentPlayList=[]
-let recentPlayList1=[]
-function recentlyPlay(index){
-    //console.log(recentPlayed)
+let recentPlayList = []
+let recentPlayList1 = []
+function recentlyPlay(index) {
     div.innerHTML = "";
-    // recentPlayed.forEach((e) => {
-      //  console.log(e)
-        playlist.forEach((i) =>{
-            if(i.id==index){
-                recentPlayList.forEach((data,i)=>{
-                    console.log(data.id==index)
-                    if(data.id==index){
-                        recentPlayList.splice(i,1)
-                      console.log('r',recentPlayList)   
-                    }
-                })   
-                recentPlayList.unshift(i)
+    playlist.forEach((i) => {
+        if (i.id == index) {
+            recentPlayList.forEach((data, i) => {
+                console.log(data.id == index)
+                if (data.id == index) {
+                    recentPlayList.splice(i, 1)
+                    console.log('r', recentPlayList)
+                }
+            })
+            recentPlayList.unshift(i)
 
-            }
-        })
-    // })
-    console.log(recentPlayList)
+        }
+    })
     recentPlayList.forEach((s) => {
         div.innerHTML += `
                             <div class="recentBody" id="${s.id}" name="recentPlay">
@@ -376,58 +369,46 @@ function recentlyPlay(index){
                                    <i class="fa-solid fa-xmark" id="${s.id}"></i>
                                    </div>
                             </div>`
-          
+
     });
-//    recentPlayed.push(div.innerHTML)
-    let recentCardBody=document.querySelectorAll('.recentBody')
-    let xMark=document.querySelectorAll('.fa-xmark').forEach((element)=>{
-        element.addEventListener('click',(event)=>{
-            const y=event.target.id
-            let arr=recentPlayList.forEach((e)=>{
-            document.querySelectorAll('.recentBody').forEach((e,index)=>{
-                  if(e.getAttribute('id')==y){
-                    recentPlayList.splice(index,1)
-                    recentlyPlay()
-                  }
+    let recentCardBody = document.querySelectorAll('.recentBody')
+    let xMark = document.querySelectorAll('.fa-xmark').forEach((element) => {
+        element.addEventListener('click', (event) => {
+            const y = event.target.id
+            let arr = recentPlayList.forEach((e) => {
+                document.querySelectorAll('.recentBody').forEach((e, index) => {
+                    if (e.getAttribute('id') == y) {
+                        recentPlayList.splice(index, 1)
+                        recentlyPlay()
+                    }
                 })
-                
+
             })
-            
+
         })
     })
-    
+
+    //recent master play
+
     const recentSongIndex = document.querySelectorAll('.recentButton').forEach((a) => {
         a.addEventListener('click', (event) => {
             const x = event.target.id
             console.log(a.classList)
-            if(a.classList.contains("fa-play")){
-                playSong(x)
-                a.classList.remove('fa-play')
-                a.classList.add('fa-pause')
-            }else{
-                audio.pause()
-                a.classList.add('fa-play')
-                a.classList.remove('fa-pause')
+            playSong(x)
 
-            }
         })
     })
-
-
-
 }
 
 
 
 
 
+//add to favorite list function
 
 const row = document.getElementById('row3')
 const likedSongs = document.querySelectorAll('.fav')
 const likeSong = []
-
-//add to favorite list function
-
 likedSongs.forEach((like) => {
     like.addEventListener('click', (data) => {
         const SongId = data.target.id
@@ -441,7 +422,7 @@ likedSongs.forEach((like) => {
             })
             // console.log(favCard)
             likeSong.push(favCard[0])
-      //      console.log(likeSong)
+            //      console.log(likeSong)
             favSongUpdate()
         } else {
             like.classList.remove('fa-solid')
@@ -449,7 +430,7 @@ likedSongs.forEach((like) => {
             const favCard1 = playlist.filter((data) => {
                 return data.id == SongId
             })
-        //    console.log(favCard1)
+            //    console.log(favCard1)
             const find = likeSong.findIndex((e) => e.movieName == favCard1[0].movieName)
             likeSong.splice(find, 1)
             favSongUpdate()
@@ -460,16 +441,16 @@ likedSongs.forEach((like) => {
 function favSongUpdate() {
     likeSong.forEach((data1, index) => {
         row.innerHTML += `
-        <div class="col-mg-5 displayFavList" >
-<div class="card card1" style="width: 11rem; background: rgba(128, 128, 128, 0.103) !important;">
-<img src="${data1.img}" class="card-img-top" alt="...">
-<div class="card-body">
-<i class="fa-solid fa-play playButton button" id="${data1.id}"></i>
-<h5 class="card-title">${data1.movieName}</h5>
-<p class="card-text">${data1.track}</p>
-</div>
-</div>
-</div>`
+                            <div class="col-mg-5 displayFavList" >
+                                <div class="card card1" style="width: 11rem; background: rgba(128, 128, 128, 0.103) !important;">
+                                    <img src="${data1.img}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <i class="fa-solid fa-play playButton button" id="${data1.id}"></i>
+                                        <h5 class="card-title">${data1.movieName}</h5>
+                                        <p class="card-text">${data1.track}</p>
+                                    </div>
+                                </div>
+                            </div>`
         const b = document.querySelectorAll('.button').forEach((a) => {
             a.addEventListener('click', (event) => {
                 const i = event.target.id
@@ -496,21 +477,23 @@ const next = document.getElementById('nextSong')
 const pre = document.getElementById('preSong')
 
 //next song play event
-next.addEventListener('click',()=>{
+next.addEventListener('click', () => {
     index++;
-    if(index > Array.from(document.querySelectorAll('.displayList')).length){
-        index=1;
+    if (index > Array.from(document.querySelectorAll('.displayList')).length) {
+        index = 1;
     }
     playSong(index)
     range()
     recentlyPlay()   //=> call recently play fuction
 })
+
+
 //preveious songs play event
 
-pre.addEventListener('click',()=>{
+pre.addEventListener('click', () => {
     index--;
-    if(index < 1){
-        index=Array.from(document.querySelectorAll('.displayList')).length;
+    if (index < 1) {
+        index = Array.from(document.querySelectorAll('.displayList')).length;
     }
     playSong(index)
     range()
@@ -557,75 +540,42 @@ vol.onchange = () => {
     //alert('hi')
     audio.volume = parseInt(vol.value) / 100
 }
-let mute = document.getElementById('mute')
-//console.log(mute)
 
-// mute.onclick=()=>{
-// console.log(mute.classList)
-//     if(mute.classList[1]=="fa-volume-low"){
-//         console.log(mute)
-//         audio.volume=0;
-//     mute.classList.remove('fa-volume-low')
-//     mute.classList.add('fa-volume-xmark')
-//     console.log('l',mute.classList)
-
-//    }
-//    else{
-//     console.log(mute)
-//     audio.volume=0.5;
-//     mute.classList.add('fa-volume-low')
-//     mute.classList.remove('fa-volume-xmark"')
-// }
-// }
-
-
-
-
-playlist.forEach((song)=>{
-//  let list=document.createElement('li')
-//  let anchorTag=document.createElement('a')
- //list.classList.add('addList')
- sug.innerHTML+=`
- <li class="searchLi" id="searchList">
- <a class="content" id=id${song.id}>
- 
- ${song.track}
- </a>
- </li>`
-
- // sug.appendChild(list)
-// list.addEventListener('click',(event)=>{
-//   event.preventDefault();
-let aTag=document.querySelectorAll('.content')
-aTag.forEach((element)=>{
-    element.addEventListener('click',()=>{
-       search.value=element.textContent
-       //userSearch.style.display="none"
-        let v=search.value.toLowerCase()
-        let item=search.getElementsByTagName('a')
-        Array.from(item).forEach((e)=>{
-            console.log('hi')
-            let ele=e.querySelector('content')
-            let eleValue=ele.textContent||ele.innerHTML
-            if(eleValue.toLowerCase().includes(input.value)){
-                e.style.display="block";
-            }else{
-                e.style.display="none";
-            }
-            search.style.display=input.value?'':"none"
+playlist.forEach((song) => {
+    sug.innerHTML += `
+                     <li class="searchLi" id="searchList">
+                        <a class="content" id=id${song.id}>${song.track}</a>
+                     </li>`
+    let aTag = document.querySelectorAll('.content')
+    aTag.forEach((element) => {
+        element.addEventListener('click', () => {
+            search.value = element.textContent
+            //userSearch.style.display="none"
+            let v = search.value.toLowerCase()
+            let item = search.getElementsByTagName('a')
+            Array.from(item).forEach((e) => {
+                console.log('hi')
+                let ele = e.querySelector('content')
+                let eleValue = ele.textContent || ele.innerHTML
+                if (eleValue.toLowerCase().includes(input.value)) {
+                    e.style.display = "block";
+                } else {
+                    e.style.display = "none";
+                }
+                search.style.display = input.value ? '' : "none"
+            })
         })
     })
-})
- 
+
 })
 
 
 //filter suggestion content
-let search=document.getElementById('search')
+let search = document.getElementById('search')
 let filter, ul, li, a, i, txtValue;
-function keyUp(){
-    filter=search.value.toUpperCase();
-    ul=document.getElementById('searchUl')
+function keyUp() {
+    filter = search.value.toUpperCase();
+    ul = document.getElementById('searchUl')
     li = ul.getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
@@ -636,76 +586,76 @@ function keyUp(){
             li[i].style.display = "none";
         }
     }
- }
+}
 
 
 
-let input=document.getElementsByTagName('input')[0]
+let input = document.getElementsByTagName('input')[0]
 //console.log('input',input)
 
-search.addEventListener('input',()=>{
- //console.log(search.value)
- let v=search.value.toLowerCase()
-let item=search.getElementsByTagName('a')
-Array.from(item).forEach((e)=>{
-    let ele=e.querySelector('content')
-    let eleValue=ele.textContent||ele.innerHTML
-    if(eleValue.toLowerCase().includes(input.value)){
-        e.style.display="block";
-    }else{
-        e.style.display="none";
-    }
-    search.style.display=input.value?'':"none"
-})
-//console.log(songArray) 
-songArray.forEach((data)=>{
-    let searchSong=document.querySelectorAll('.displayList')
-  searchSong.forEach((item)=>{
-    let trackName=item.querySelector('.songTrack').textContent.toLowerCase()
-if(trackName.includes(v)){
-    item.style.display="block";
-  }else{
-    item.style.display="none";
-  }
+search.addEventListener('input', () => {
+    //console.log(search.value)
+    let v = search.value.toLowerCase()
+    let item = search.getElementsByTagName('a')
+    Array.from(item).forEach((e) => {
+        let ele = e.querySelector('content')
+        let eleValue = ele.textContent || ele.innerHTML
+        if (eleValue.toLowerCase().includes(input.value)) {
+            e.style.display = "block";
+        } else {
+            e.style.display = "none";
+        }
+        search.style.display = input.value ? '' : "none"
+    })
+    //console.log(songArray) 
+    songArray.forEach((data) => {
+        let searchSong = document.querySelectorAll('.displayList')
+        searchSong.forEach((item) => {
+            let trackName = item.querySelector('.songTrack').textContent.toLowerCase()
+            if (trackName.includes(v)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
 
-  })
-}) 
- 
+        })
+    })
+
 })
 // alert(search.value)
 // console.log(search.value)
-search.addEventListener('input',()=>{
-    if(!search.value){
-        document.getElementById('sug').style.display="none";        
-    }else{
-        document.getElementById('sug').style.display="block";
+search.addEventListener('input', () => {
+    if (!search.value) {
+        document.getElementById('sug').style.display = "none";
+    } else {
+        document.getElementById('sug').style.display = "block";
     }
 
 })
 
 
-let searchId=document.querySelectorAll('.content')
-playlist.forEach((data)=>{
-    searchId.forEach((e)=>{
-        if(e.classList[2]==data.id){
-            search.value=e.textContent
-  //          console.log(search.value)
+let searchId = document.querySelectorAll('.content')
+playlist.forEach((data) => {
+    searchId.forEach((e) => {
+        if (e.classList[2] == data.id) {
+            search.value = e.textContent
+            //          console.log(search.value)
         }
 
     })
-    
+
 })
 
 
-audio.onplay=()=>{
-    let ani=document.getElementById('animation')
-    ani.style.visibility="visible" 
+audio.onplay = () => {
+    let ani = document.getElementById('animation')
+    ani.style.visibility = "visible"
 }
-audio.onpause=()=>{
-    document.getElementById('animation').style.visibility="hidden"
+audio.onpause = () => {
+    document.getElementById('animation').style.visibility = "hidden"
 }
 
-function displayMore(){
-    document.getElementById('sug').style.display="none";    
+function displayMore() {
+    document.getElementById('sug').style.display = "none";
 }
 
