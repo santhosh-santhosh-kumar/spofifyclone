@@ -102,11 +102,6 @@ overflow: auto !important;
     text-align: center;
     margin-top: 20px;
 }
-/* .firstlist{
-    display: flex;
-    padding-left: 00px;
-
-} */
 
 .fa-circle-play{
     padding-right: 10px;
@@ -141,9 +136,7 @@ img{
 .card1{
     position: relative;
     margin-left: 20px !important;
-    background-color: rgb(33,33,33) !important;
-
-    /* background: rgba(128, 128, 128, 0.103) !important; */
+    background: rgba(128, 128, 128, 0.103) !important;
 }
 
 .playaudio{

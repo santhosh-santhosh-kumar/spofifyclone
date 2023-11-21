@@ -340,9 +340,10 @@ function recentlyPlay() {
     recentPlayed.forEach((e) => {
        // console.log(recentPlayList)
         recentPlayList.forEach((data)=>{
-            console.log(data)
+           // console.log(data)
         })
         const r = playlist.find((i) => i.id == e)
+        //console.log(r)
         if (r) {
             div.innerHTML += `
                                 <div class="recentBody" id="${r.id}" name="recentPlay">
