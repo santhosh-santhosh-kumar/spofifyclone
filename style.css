@@ -398,4 +398,12 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
   }
 
+  input[type="range"]::-moz-rang-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background-color:white;
+    overflow: visible;
+    cursor: pointer;
+  }
   
